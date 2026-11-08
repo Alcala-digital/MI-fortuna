@@ -1,0 +1,333 @@
+/* =====================================================================
+   MI FORTUNA MENU — STYLES
+   Mobile-first: the base styles are for phones (that's who scans the QR).
+   The @media rule at the bottom adds tweaks for wider screens.
+   ===================================================================== */
+
+/* CSS variables ("custom properties"): define colors once, reuse everywhere.
+   To re-theme the whole menu for another restaurant, change only these. */
+:root {
+  --orange: #e2582b;   /* their "Almuerzo · Breakfast" banner */
+  --green: #2f6b4f;    /* "Side Orders" banner */
+  --red: #c8372d;      /* "Drinks" banner */
+  --cream: #fbf6ee;    /* warm paper-like background */
+  --ink: #2b2420;      /* main text: softer than pure black */
+  --muted: #7a6e66;    /* secondary text (descriptions) */
+  --line: #eadfd2;     /* thin dividers */
+  --radius: 14px;
+}
+
+/* box-sizing: border-box means padding is included in an element's width,
+   so "width: 100%" plus padding doesn't overflow. Almost every project uses this. */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Smooth scrolling when a category tab is tapped. */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: relative;            /* lets the language button be placed inside it (below) */
+  text-align: center;
+  padding: 3rem 1rem 1.25rem;     /* extra top space for the language button */
+  background: var(--orange);
+  color: #fff;
+}
+.site-header h1 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;              /* this font only comes in one weight */
+  font-size: 2.4rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.tagline { margin: 0.1rem 0 0.75rem; opacity: 0.9; }
+.notice {
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;          /* a huge radius = pill shape */
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.logo { width: 110px; border-radius: 10px; margin-bottom: 0.5rem; }
+
+/* LANGUAGE TOGGLE: language button in the top-right corner.
+   "position: absolute" places it relative to the nearest parent that has
+   "position: relative", which is .site-header (see above). */
+.lang-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: inherit;                 /* buttons don't inherit the page font by default */
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- Sticky bar: search + category tabs ----------
+   The WRAPPER is sticky, so the search box and the tabs stick together. */
+.sticky-bar {
+  position: sticky;              /* behaves normally until it reaches...  */
+  top: 0;                        /* ...the top of the screen, then sticks */
+  z-index: 10;                   /* stays above the menu cards */
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  padding-top: 0.75rem;
+}
+
+/* SEARCH: search box */
+.search-input {
+  display: block;
+  width: calc(100% - 2rem);      /* full width minus 1rem on each side */
+  max-width: 728px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: 1rem;               /* 16px or more stops iPhones from auto-zooming on tap */
+}
+.search-input:focus { outline: none; border-color: var(--orange); }
+
+.category-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;              /* too many tabs? swipe sideways */
+  padding: 0.75rem 1rem;
+  scrollbar-width: none;         /* hide the scrollbar (Firefox) */
+}
+/* GOTCHA: the HTML "hidden" attribute normally means display:none, but our
+   "display: flex" above overrides it. This rule makes "hidden" win again.
+   app.js hides the tabs while you're searching. */
+.category-nav[hidden] { display: none; }
+.category-nav::-webkit-scrollbar { display: none; } /* hide it (Chrome/Safari) */
+
+.category-nav a {
+  flex: 0 0 auto;                /* don't shrink tabs; let them scroll instead */
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;           /* keep each tab label on one line */
+}
+/* app.js adds the class "active" to the tab of the section you're looking at. */
+.category-nav a.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* ---------- Menu sections ---------- */
+.menu { max-width: 760px; margin: 0 auto; padding: 0 1rem 2rem; }
+
+.menu-section {
+  /* When a tab is tapped, the browser scrolls to the section. Without this
+     margin the sticky nav would cover the section title. */
+  scroll-margin-top: 125px;      /* taller now: search box + tabs */
+  padding-top: 1.5rem;
+}
+
+/* ---------- Category card (with swipeable photos) ----------
+   The card is built in layers, stacked with position: absolute.
+   From bottom to top:
+     1. .hero-track  a row of photos you can swipe sideways
+     2. ::after      a dark gradient, so white text is readable on ANY photo
+     3. .hero-text   the category title and note
+     4. .hero-dots   one dot per photo (only when there are 2+ photos)
+
+   The swiping is done by the browser itself with "scroll-snap" (pure CSS).
+   JavaScript only updates the dots and makes them clickable. */
+.category-hero {
+  --hero-fallback: linear-gradient(135deg, var(--orange), #b8401c);
+  position: relative;            /* the layers inside are positioned relative to this card */
+  aspect-ratio: 16 / 9;          /* height follows the width; same shape on every phone */
+  margin-bottom: 0.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;              /* clip the photos to the rounded corners */
+  color: #fff;
+  background: var(--hero-fallback); /* only visible when there are no photos */
+}
+
+/* Layer 1: the photo strip. */
+.hero-track {
+  position: absolute;
+  inset: 0;                      /* shortcut for top: 0; right: 0; bottom: 0; left: 0 → fill the card */
+  display: flex;                 /* photos sit side by side in one row */
+  overflow-x: auto;              /* the row is wider than the card, so it scrolls sideways */
+  scroll-snap-type: x mandatory; /* after a swipe, ALWAYS stop exactly on a photo, never halfway */
+  scrollbar-width: none;         /* hide the scrollbar (Firefox) */
+}
+.hero-track::-webkit-scrollbar { display: none; } /* hide it (Chrome/Safari) */
+
+.hero-slide {
+  flex: 0 0 100%;                /* each photo is exactly as wide as the card */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* fill the card, cropping the photo if needed */
+  scroll-snap-align: start;      /* the snap point: the left edge of each photo */
+}
+
+/* Layer 2: the dark gradient. ::after creates an extra "fake" element
+   inside the card without adding any HTML. */
+.category-hero::after {
+  content: "";                   /* ::after only appears if it has content, even empty */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0) 75%);
+  pointer-events: none;          /* touches go THROUGH the gradient to the photos, so swiping works */
+}
+
+/* Layer 3: title and note, pinned to the bottom. */
+.hero-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;                    /* above the gradient */
+  padding: 1rem 1.1rem;
+  pointer-events: none;          /* swiping on top of the text still moves the photos */
+}
+
+/* Layer 4: the dots, in the top-right corner (the text is at the bottom). */
+.hero-dots {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35); /* dark pill so the dots show on bright photos */
+}
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: width 0.2s;        /* animate the width change below */
+}
+.hero-dot.active { width: 20px; background: #fff; } /* the current photo's dot stretches */
+
+/* No photos? A shorter colored card. Here the text is NOT absolute, so the
+   card grows if the note is long instead of the text spilling out. */
+.category-hero.no-photo {
+  aspect-ratio: auto;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;     /* text at the bottom, like the photo cards */
+}
+.category-hero.no-photo .hero-text { position: relative; }
+
+/* nth-of-type picks every 3rd section, starting from the 2nd or 3rd, and
+   changes the fallback color so the plain cards don't all look the same. */
+.menu-section:nth-of-type(3n + 2) .category-hero { --hero-fallback: linear-gradient(135deg, var(--green), #1e4a36); }
+.menu-section:nth-of-type(3n + 3) .category-hero { --hero-fallback: linear-gradient(135deg, var(--red), #8f241c); }
+
+.menu-section .category-hero h2 {
+  /* ".menu-section .category-hero h2" is MORE specific than ".menu-section h2"
+     (two classes instead of one), so this white color wins over the orange. */
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.hero-note { margin: 0.3rem 0 0; font-size: 0.9rem; font-weight: 600; opacity: 0.95; }
+
+/* While searching we show a small plain heading instead of the big card. */
+.menu-section .search-heading { font-size: 1.1rem; margin-bottom: 0; }
+.menu-section h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  color: var(--orange);
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+}
+
+/* ---------- One dish ---------- */
+.item {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.item-photo {
+  width: 92px;
+  height: 92px;
+  flex-shrink: 0;
+  object-fit: cover;             /* crop photos to fill the square without stretching */
+  border-radius: var(--radius);
+}
+.item-body { flex: 1; min-width: 0; } /* min-width: 0 lets long text wrap inside flex */
+
+.item-header {
+  display: flex;
+  justify-content: space-between;  /* name on the left, price on the right */
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.item-name { margin: 0; font-size: 1.05rem; font-weight: 800; }
+.item-price { font-weight: 800; color: var(--green); white-space: nowrap; }
+.item-desc { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.93rem; }
+.item-options { margin: 0.35rem 0 0; font-size: 0.82rem; color: var(--red); font-weight: 600; }
+.spicy { font-size: 0.9rem; }
+
+/* SOLD OUT: sold-out dishes are faded, with a small badge.
+   The badge sits inside .item-body, which is NOT faded, so it stays bold
+   and easy to read. */
+.item.sold-out .item-photo,
+.item.sold-out .item-header,
+.item.sold-out .item-desc,
+.item.sold-out .item-options { opacity: 0.45; }
+.item.sold-out .item-price { text-decoration: line-through; }
+.badge {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Shown if the menu fails to load. */
+.status { text-align: center; color: var(--muted); padding: 3rem 1rem; }
+
+.site-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 1.5rem 1rem 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Wider screens (tablets / desktop) ----------
+   Everything above applies everywhere; this only adds changes once
+   the screen is at least 700px wide. That's what "mobile-first" means. */
+@media (min-width: 700px) {
+  .site-header h1 { font-size: 3.2rem; }
+  .item-photo { width: 120px; height: 120px; }
+}

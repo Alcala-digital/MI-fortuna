@@ -1,0 +1,39 @@
+category,name,description_en,description_es,price,options_en,options_es,spicy,image_url,available
+Almuerzo · Breakfast,Huevos Rancheros,Three eggs on a corn tortilla with our special sauce and melted cheese.,Tres huevos sobre tortilla de maíz con nuestra salsa especial y queso derretido.,12.50,,,FALSE,,TRUE
+Almuerzo · Breakfast,Huevos a la Mexicana,"Scrambled eggs mixed with jalapeños, tomatoes & onions.","Huevos revueltos con jalapeños, tomate y cebolla.",12.50,,,TRUE,,TRUE
+Almuerzo · Breakfast,Huevos con Chorizo y Papas,"Scrambled eggs, potatoes & zesty Mexican sausage.",Huevos revueltos con papas y chorizo mexicano.,13.75,,,FALSE,,TRUE
+Almuerzo · Breakfast,Chilaquiles,"Deep fried corn tortilla pieces sautéed in our red sauce with onions, tomatoes, fresh Mexican cheese & two eggs any style.","Totopos de tortilla de maíz salteados en nuestra salsa roja con cebolla, tomate, queso fresco y dos huevos al gusto.",14.50,Add sirloin +$8.00 • Add T-Bone +$12.00,Con sirloin +$8.00 • Con T-Bone +$12.00,TRUE,images/thumb-chilaquiles.webp,TRUE
+Almuerzo · Breakfast,Almuerzo Fortuna,Two eggs any style with your choice of sirloin steak or T-bone cooked at your temperature.,"Dos huevos al gusto con sirloin o T-bone, cocido a su término.",17.00,With sirloin $17.00 • With T-Bone $20.00,Con sirloin $17.00 • Con T-Bone $20.00,FALSE,,TRUE
+Almuerzo · Breakfast,Breakfast Skillet,"Hash browns topped with sirloin steak, onions, tomato, cheddar cheese & two eggs any style.","Papas hash brown cubiertas con sirloin, cebolla, tomate, queso cheddar y dos huevos al gusto.",16.00,,,FALSE,,TRUE
+Almuerzo · Breakfast,Breakfast Burrito,"One giant flour tortilla filled with eggs, steak, potatoes, tomato, cheddar cheese, onions & a side of hash browns.","Una tortilla de harina gigante rellena de huevo, carne, papas, tomate, queso cheddar y cebolla, con papas hash brown al lado.",13.99,,,FALSE,,TRUE
+Almuerzo · Breakfast,Omelet Ranchero,"Eggs filled with peppers, onions, potatoes and cheddar and Monterrey Jack cheese. Served with hash browns.","Omelet relleno de pimiento, cebolla, papas y queso cheddar y Monterey Jack. Servido con papas hash brown.",11.75,,,FALSE,,TRUE
+Pancakes & More,Waffles,,,9.00,,,FALSE,,TRUE
+Pancakes & More,Golden Toast (2),French toast grilled to a perfect golden brown.,"Pan francés a la plancha, perfectamente dorado.",8.75,,,FALSE,,TRUE
+Pancakes & More,Golden Stack (3),Fluffy pancakes with syrup.,Hotcakes esponjosos con jarabe.,10.99,,,FALSE,images/thumb-golden-stack.webp,TRUE
+Pancakes & More,Crepes (3),,,9.50,,,FALSE,,SOLD OUT
+Mini Fortuna · Kids 12 & under,Lucky Egg,One egg your style with bacon or sausage & hash browns.,Un huevo al gusto con tocino o salchicha y papas hash brown.,8.99,,,FALSE,,TRUE
+Mini Fortuna · Kids 12 & under,Silver Dollar,Six mini pancakes with sausage or bacon.,Seis mini hotcakes con salchicha o tocino.,8.99,Add chocolate chips +$2.00,Agregue chispas de chocolate +$2.00,FALSE,,TRUE
+Mini Fortuna · Kids 12 & under,Mini Golden Stack,One pancake with sausage or bacon.,Un hotcake con salchicha o tocino.,8.99,Add chocolate chips +$2.00,Agregue chispas de chocolate +$2.00,FALSE,,TRUE
+Mini Fortuna · Kids 12 & under,Mini Golden Toast,One piece of French toast with sausage or bacon.,Una pieza de pan francés con salchicha o tocino.,8.99,,,FALSE,,TRUE
+Side Orders,Bacon (3),,,3.75,,,FALSE,,TRUE
+Side Orders,Sausage (3),,,3.75,,,FALSE,,TRUE
+Side Orders,Ham,,,3.75,,,FALSE,,TRUE
+Side Orders,Side of Fruit,,,4.50,,,FALSE,,TRUE
+Side Orders,Bowl of Fruit,,,6.00,,,FALSE,,TRUE
+Side Orders,Hash Browns,,,4.00,,,FALSE,,TRUE
+Side Orders,French Fries,,,4.00,,,FALSE,,TRUE
+Side Orders,Egg Your Style,,,2.00,,,FALSE,,TRUE
+Side Orders,Side of Toast,,,2.50,,,FALSE,,TRUE
+Side Orders,Avocado,,,2.00,,,FALSE,,TRUE
+Side Orders,Cheese,,,1.25,,,FALSE,,TRUE
+Side Orders,T-Bone (12 oz),,,12.00,,,FALSE,,TRUE
+Side Orders,Sirloin,,,8.00,,,FALSE,,TRUE
+Drinks,Fountain Drinks,"Pepsi, Pepsi Zero, Starry, Mt. Dew, Dr Pepper and more.","Pepsi, Pepsi Zero, Starry, Mt. Dew, Dr Pepper y más.",3.00,One refill.,Un refill.,FALSE,,TRUE
+Drinks,Coke (bottle),,,3.50,,,FALSE,,TRUE
+Drinks,Jarritos (bottle),,,3.50,,,FALSE,,TRUE
+Drinks,Orange Juice,,,2.49,Small $2.49 • Large $4.99,Chico $2.49 • Grande $4.99,FALSE,,TRUE
+Drinks,Apple or Cranberry Juice,,,,,,FALSE,,TRUE
+Drinks,Milk,,,2.49,Small $2.49 • Large $3.29,Chico $2.49 • Grande $3.29,FALSE,,TRUE
+Drinks,Chocolate Milk,,,2.49,Small $2.49 • Large $3.29,Chico $2.49 • Grande $3.29,FALSE,,TRUE
+Drinks,Organic Coffee,Regular or decaf.,Regular o descafeinado.,3.00,,,FALSE,,TRUE
+Drinks,Hot Tea,,,2.75,,,FALSE,,TRUE
