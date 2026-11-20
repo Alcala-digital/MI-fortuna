@@ -1,6 +1,22 @@
-category,title_en,title_es,image_url,note_en,note_es
-Almuerzo · Breakfast,Almuerzo · Breakfast,Almuerzo · Desayuno,images/hero-huevos-mexicana.webp|images/hero-chilaquiles.webp|images/hero-burrito.webp,"Served with Mexican rice, refried beans & tortillas OR your choice of whole wheat or white toast.","Servido con arroz mexicano, frijoles refritos y tortillas, O pan tostado integral o blanco."
-Pancakes & More,Pancakes & More,Hotcakes y Más,images/hero-pancakes.webp,"Add strawberry, apple, cherry or chocolate chips for $2.00 more.","Agregue fresa, manzana, cereza o chispas de chocolate por $2.00 más."
-Mini Fortuna · Kids 12 & under,Mini Fortuna · Kids 12 & under,Mini Fortuna · Niños de 12 años o menos,,"$8.99 each. Includes soda, juice, chocolate milk or white milk (no refill).","$8.99 cada uno. Incluye refresco, jugo, leche con chocolate o leche blanca (sin refill)."
-Side Orders,Side Orders,Acompañamientos,,All extras will be an additional charge.,Todos los extras tienen un cargo adicional.
-Drinks,Drinks,Bebidas,,,
+menu,category,title_en,title_es,image_url,note_en,note_es
+breakfast,Almuerzo · Breakfast,Almuerzo · Breakfast,Almuerzo · Desayuno,images/hero-huevos-mexicana.webp|images/hero-chilaquiles.webp|images/hero-burrito.webp|images/hero-pancakes.webp,"Served with Mexican rice, refried beans & tortillas OR your choice of whole wheat or white toast.","Servido con arroz mexicano, frijoles refritos y tortillas, O pan tostado integral o blanco."
+breakfast,Mini Fortuna · Breakfast,Mini Fortuna · Kids 12 & under,Mini Fortuna · Niños de 12 años o menos,,"$9.00 each. Includes soda, juice, chocolate milk or white milk (no refill).","$9.00 cada uno. Incluye refresco, jugo, leche con chocolate o leche blanca (sin refill)."
+breakfast,Breakfast Sides,Side Orders,Acompañamientos,,All extras will be an additional charge.,Todos los extras tienen un cargo adicional.
+lunch,Appetizers,Appetizers,Aperitivos,,Your first basket of chips & salsa is complimentary for each table.,La primera canasta de totopos con salsa es cortesía de la casa para cada mesa.
+lunch,Tacos,Tacos,Tacos,,"Your choice of hard, flour, or corn tortillas. Served with Mexican rice and refried beans, topped Mexican style (onion & cilantro) or American style (lettuce, cheese, tomato).","Tortilla dura, de harina o de maíz, a su elección. Servidos con arroz mexicano y frijoles refritos, estilo mexicano (cebolla y cilantro) o estilo americano (lechuga, queso y tomate)."
+lunch,Burritos,Burritos,Burritos,,"One giant flour tortilla served with Mexican rice, refried beans & sour cream.","Una tortilla de harina gigante servida con arroz mexicano, frijoles refritos y crema."
+lunch,Enchiladas,Enchiladas,Enchiladas,,"Served with Mexican rice, refried beans & sour cream.","Servidas con arroz mexicano, frijoles refritos y crema."
+lunch,Antojitos,Antojitos,Antojitos,,,
+lunch,Antojitos Mexicanos,Antojitos Mexicanos,Antojitos Mexicanos,,Served with Mexican rice and refried beans.,Servidos con arroz mexicano y frijoles refritos.
+lunch,Platillos Mexicanos,Platillos Mexicanos,Platillos Mexicanos,,"Served with Mexican rice, refried beans & tortillas.","Servidos con arroz mexicano, frijoles refritos y tortillas."
+lunch,Especialidades,Especialidades,Especialidades,,"Served with Mexican rice, refried beans, sour cream & tortillas.","Servidas con arroz mexicano, frijoles refritos, crema y tortillas."
+lunch,Seafood,Seafood,Mariscos,,,
+lunch,American Dishes,American Dishes,Platillos Americanos,,Served with fries and pickle. Add bacon to any dish for $2.50 more!,Servidos con papas fritas y pepinillo. ¡Agregue tocino a cualquier platillo por $2.50!
+lunch,Lunch Specials,Lunch Specials · Tue–Fri 11am–2pm,Especiales de Mediodía · Mar–Vie 11am–2pm,,"$11.99 each. Served with Mexican rice, refried beans and sour cream. No substitutions.","$11.99 cada uno. Servidos con arroz mexicano, frijoles refritos y crema. Sin sustituciones."
+lunch,Mini Fortuna,Mini Fortuna · Kids 12 & under,Mini Fortuna · Niños de 12 años o menos,,"$9.00 each. Includes soda, juice, chocolate milk or white milk (no refill). Choice of rice & beans or french fries. Upgrade to steak for $2.00 more!","$9.00 cada uno. Incluye refresco, jugo, leche con chocolate o leche blanca (sin refill). Arroz y frijoles o papas fritas a elegir. ¡Cambie a asada por $2.00 más!"
+lunch,Side Orders,Side Orders,Acompañamientos,,All extras will be an additional charge.,Todos los extras tienen un cargo adicional.
+lunch,Desserts,Desserts,Postres,,,
+all,Drinks,Drinks,Bebidas,,,
+all,Alcoholic Drinks,Alcoholic Drinks,Bebidas con Alcohol,,House Margaritas Thursday! $6.00 each.,¡Jueves de margaritas de la casa! $6.00 cada una.
+all,Beer & Wine,Beer & Wine,Cerveza y Vino,,,
+all,Favorites,★ Mi Fortuna Favorites,★ Favoritos de Mi Fortuna,images/hero-chilaquiles.webp|images/hero-pancakes.webp,Our customers' most-loved dishes.,Los platillos preferidos de nuestros clientes.

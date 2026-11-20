@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- base target="_top": Apps Script shows this page inside a frame.
+       This makes any link open in the full window, not inside the frame. -->
+  <base target="_top">
+  <meta charset="utf-8">
+  <style>
+    /* =================================================================
+       ADMIN PAGE STYLES — phone first, since the owner will use her phone
+       ================================================================= */
+    :root {
+      --red: #b3261e;
+      --green: #2e7d32;
+      --amber: #b26a00;
+      --ink: #2b211c;
+      --muted: #7a6b62;
+      --line: #e7ddd4;
+      --bg: #faf6f1;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    /* Sticky header: filters and buttons stay on screen while scrolling */
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 16px;
+      display: grid;
+      gap: 10px;
+    }
+    h1 { font-size: 1.1rem; margin: 0; }
+    .controls, .actions { display: flex; gap: 8px; }
+    .controls select, .controls input { flex: 1; min-width: 0; }
+
+    input, select, textarea, button {
+      font: inherit;
+      padding: 10px 12px;          /* big enough for fingers */
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: inherit;
+    }
+    button { cursor: pointer; }
+    button.primary { background: var(--red); border-color: var(--red); color: #fff; font-weight: 600; }
+    button:disabled { opacity: 0.5; cursor: wait; }
+
+    main { padding: 8px 16px 80px; max-width: 760px; margin: 0 auto; }
+    .status { text-align: center; color: var(--muted); padding: 40px 0; }
+
+    /* One category */
+    .category h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin: 20px 0 8px;
+    }
+
+    /* One dish row: name/price on the left, status buttons on the right */
+    .dish {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 8px 8px 0;
+      margin-bottom: 8px;
+    }
+    .dish.is-hidden { opacity: 0.55; }       /* hidden dishes look faded */
+    .dish-main {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dish-name { font-weight: 600; }
+    .dish-price { color: var(--muted); font-size: 0.9rem; }
+
+    /* The 3-way status switch */
+    .status-group { display: flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+    .status-group button {
+      border: 0;
+      border-radius: 0;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      background: #fff;
+      color: var(--muted);
+    }
+    .status-group button + button { border-left: 1px solid var(--line); }
+    /* Each status gets its own color when it's the active one */
+    .status-group button.active[data-status="TRUE"]     { background: var(--green); color: #fff; }
+    .status-group button.active[data-status="SOLD OUT"] { background: var(--amber); color: #fff; }
+    .status-group button.active[data-status="FALSE"]    { background: var(--muted); color: #fff; }
+
+    /* FAVORITES: the star button on each dish */
+    .fav-btn {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      font-size: 1.3rem;
+      line-height: 1;
+      color: #c9bdb3;              /* empty star: light gray */
+      background: #fff;
+    }
+    .fav-btn.active {
+      color: #e0a100;              /* filled star: gold */
+      border-color: #e0a100;
+      background: #fff8e1;
+    }
+
+    /* Edit / add form in a <dialog> (a built-in pop-up element) */
+    dialog {
+      width: min(560px, 94vw);
+      border: 0;
+      border-radius: 16px;
+      padding: 0;
+    }
+    dialog::backdrop { background: rgba(0, 0, 0, 0.4); }
+    form { display: grid; gap: 12px; padding: 20px; }
+    form h2 { margin: 0; font-size: 1.15rem; }
+    label { display: grid; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+    label input, label select, label textarea { color: var(--ink); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .checks { display: flex; gap: 20px; }
+    .checks label { display: flex; align-items: center; gap: 6px; color: var(--ink); }
+    .form-buttons { display: flex; justify-content: flex-end; gap: 8px; }
+
+    /* Little message at the bottom ("Saved") */
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%) translateY(150%);   /* starts off screen */
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      transition: transform 0.25s;
+      max-width: 90vw;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }  /* slides up into view */
+    #toast.error { background: var(--red); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>Mi Fortuna · Menu Editor</h1>
+    <div class="controls">
+      <select id="menu-filter" aria-label="Which menu">
+        <option value="every">All menus</option>
+        <option value="favorites">★ Favorites</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch &amp; Dinner</option>
+        <option value="all">All day (drinks)</option>
+      </select>
+      <input id="search" type="search" placeholder="Search dishes…" aria-label="Search dishes">
+    </div>
+    <div class="actions">
+      <button id="add-btn" class="primary" type="button">+ Add dish</button>
+      <button id="reset-btn" type="button">Reset sold out</button>
+    </div>
+  </header>
+
+  <main id="list"><p class="status">Loading menu…</p></main>
+
+  <dialog id="editor">
+    <form id="dish-form">
+      <h2 id="form-title">Edit dish</h2>
+
+      <label>Name
+        <input name="name" required>
+      </label>
+
+      <div class="row2">
+        <label>Price
+          <!-- inputmode="decimal" shows the number keypad on phones -->
+          <input name="price" inputmode="decimal" placeholder="12.50">
+        </label>
+        <label>Status
+          <select name="available">
+            <option value="TRUE">Available</option>
+            <option value="SOLD OUT">Sold out today</option>
+            <option value="FALSE">Hidden</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row2">
+        <label>Menu
+          <select name="menu">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch &amp; Dinner</option>
+            <option value="all">All day</option>
+          </select>
+        </label>
+        <label>Category
+          <select name="category"></select>   <!-- filled by JavaScript from the categories tab -->
+        </label>
+      </div>
+
+      <label>Description (English)
+        <textarea name="description_en" rows="2"></textarea>
+      </label>
+      <label>Description (Spanish)
+        <textarea name="description_es" rows="2"></textarea>
+      </label>
+      <label>Options (English)
+        <input name="options_en" placeholder="Add steak +$4.00">
+      </label>
+      <label>Options (Spanish)
+        <input name="options_es" placeholder="Con asada +$4.00">
+      </label>
+
+      <div class="checks">
+        <label><input type="checkbox" name="spicy"> Spicy 🌶️</label>
+        <label><input type="checkbox" name="gluten_free"> Gluten free</label>
+        <label><input type="checkbox" name="favorite"> ★ Favorite</label>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" id="cancel-btn">Cancel</button>
+        <button type="submit" id="save-btn" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =================================================================
+       ADMIN PAGE LOGIC
+       Same "state → render" idea as app.js: keep the data in variables,
+       and redraw the list from them whenever something changes.
+       ================================================================= */
+
+    /* ---------- STATE ---------- */
+    let items = [];          // every dish, each with its Sheet row number in item._row
+    let categories = [];     // [{ menu, category, title }] from the categories tab
+    let editingItem = null;  // the dish open in the form, or null when ADDING a new one
+
+    const STATUS_LABELS = { "TRUE": "On", "SOLD OUT": "Sold out", "FALSE": "Hidden" };
+
+    // Shortcuts to elements we use a lot
+    const listEl = document.getElementById("list");
+    const menuFilter = document.getElementById("menu-filter");
+    const searchInput = document.getElementById("search");
+    const dialog = document.getElementById("editor");
+    const form = document.getElementById("dish-form");
+    const saveBtn = document.getElementById("save-btn");
+
+    /* field("price") → the price <input> inside the form.
+       namedItem() finds a form control by its name="" attribute.
+       (We don't write form.name because "name" is already a property of
+       every form, the form's OWN name, so it would grab the wrong thing.) */
+    function field(name) {
+      return form.elements.namedItem(name);
+    }
+
+
+    /* ---------- TALKING TO Code.gs ----------
+       google.script.run is how an Apps Script page calls the server.
+       It uses callbacks:
+         google.script.run
+           .withSuccessHandler(result => ...)   // runs if the server function worked
+           .withFailureHandler(error => ...)    // runs if it threw an error
+           .updateDish(12, "Chilaquiles", {...});
+       Wrapping it in a Promise lets us write   await callServer("updateDish", ...)
+       which reads top to bottom, like the fetch() code in app.js. */
+    function callServer(functionName, ...args) {
+      return new Promise((resolve, reject) => {
+        google.script.run
+          .withSuccessHandler(resolve)
+          .withFailureHandler(reject)
+          [functionName](...args);   // bracket notation: call the function whose NAME is in the variable
+      });
+    }
+
+
+    /* ---------- START ---------- */
+    init();
+
+    async function init() {
+      menuFilter.addEventListener("change", render);
+      searchInput.addEventListener("input", render);
+      document.getElementById("add-btn").addEventListener("click", () => openEditor(null));
+      document.getElementById("reset-btn").addEventListener("click", resetAllSoldOut);
+      document.getElementById("cancel-btn").addEventListener("click", () => dialog.close());
+      field("menu").addEventListener("change", () => fillCategoryOptions(field("menu").value, ""));
+      form.addEventListener("submit", saveForm);
+
+      // EVENT DELEGATION: instead of one listener per button (150+ dishes ×
+      // 4 buttons), ONE listener on the whole list. When something is
+      // clicked, we look at WHAT was clicked and decide what to do.
+      listEl.addEventListener("click", handleListClick);
+
+      await loadData();
+    }
+
+    async function loadData() {
+      try {
+        const data = await callServer("getAdminData");
+        items = data.items;
+        categories = data.categories;
+        render();
+      } catch (error) {
+        listEl.innerHTML = `<p class="status">Couldn't load the menu: ${escapeHtml(error.message)}</p>`;
+      }
+    }
+
+
+    /* ---------- RENDER: draw the list from the state ---------- */
+    function render() {
+      const menuChoice = menuFilter.value;
+      const query = normalizeText(searchInput.value.trim());
+
+      const visible = items.filter(item => {
+        const itemMenu = (item.menu || "all").toLowerCase();
+        // FAVORITES: the "★ Favorites" choice shows only starred dishes, from every menu.
+        const menuOk = menuChoice === "every"
+          || (menuChoice === "favorites" ? isFavorite(item) : itemMenu === menuChoice);
+        const searchOk = !query || normalizeText(`${item.name} ${item.category}`).includes(query);
+        return menuOk && searchOk;     // keep the dish only if BOTH are true
+      });
+
+      if (visible.length === 0) {
+        const message = menuChoice === "favorites"
+          ? "No favorites yet. Tap the ☆ next to a dish to add it."
+          : "No dishes match.";
+        listEl.innerHTML = `<p class="status">${message}</p>`;
+        return;
+      }
+
+      // Group by category, keeping the Sheet's order (Map remembers insertion order).
+      const groups = new Map();
+      for (const item of visible) {
+        if (!groups.has(item.category)) groups.set(item.category, []);
+        groups.get(item.category).push(item);
+      }
+
+      let html = "";
+      for (const [category, dishes] of groups) {
+        html += `
+          <section class="category">
+            <h2>${escapeHtml(category)}</h2>
+            ${dishes.map(renderDish).join("")}
+          </section>`;
+      }
+      listEl.innerHTML = html;
+    }
+
+    function renderDish(item) {
+      const status = statusOf(item);
+      const price = item.price ? `$${escapeHtml(item.price)}` : "No price";
+
+      // One button per status. The active one gets the "active" class (colored by the CSS).
+      // data-action and data-status tell handleListClick what this button does.
+      const statusButtons = Object.keys(STATUS_LABELS).map(value => `
+        <button type="button"
+                data-action="status"
+                data-status="${value}"
+                class="${value === status ? "active" : ""}"
+                aria-pressed="${value === status}">${STATUS_LABELS[value]}</button>`
+      ).join("");
+
+      // FAVORITES: filled star ★ when it's a favorite, empty star ☆ when not.
+      const fav = isFavorite(item);
+      const favButton = `
+          <button type="button" class="fav-btn${fav ? " active" : ""}"
+                  data-action="favorite"
+                  aria-pressed="${fav}"
+                  aria-label="${fav ? "Remove from favorites" : "Add to favorites"}">${fav ? "★" : "☆"}</button>`;
+
+      // data-row on the whole row: whatever is clicked inside it, we can find the dish.
+      return `
+        <div class="dish${status === "FALSE" ? " is-hidden" : ""}" data-row="${item._row}">
+          <button type="button" class="dish-main" data-action="edit">
+            <span class="dish-name">${escapeHtml(item.name)}</span>
+            <span class="dish-price">${price}</span>
+          </button>
+          ${favButton}
+          <div class="status-group">${statusButtons}</div>
+        </div>`;
+    }
+
+    /* The Sheet may say "TRUE", "True", "SOLD OUT"... Upper-case it so
+       comparisons always work. A blank cell counts as available. */
+    function statusOf(item) {
+      return (item.available || "TRUE").toUpperCase();
+    }
+
+    /* FAVORITES: a checked checkbox arrives from the Sheet as "TRUE". */
+    function isFavorite(item) {
+      return (item.favorite || "").toUpperCase() === "TRUE";
+    }
+
+
+    /* ---------- CLICKS IN THE LIST ---------- */
+    function handleListClick(event) {
+      // closest() walks UP from the clicked element until it finds a match.
+      // Tapping the price <span> still finds its <button data-action="edit">.
+      const button = event.target.closest("[data-action]");
+      if (!button) return;                                    // clicked empty space
+
+      const row = Number(button.closest(".dish").dataset.row); // "12" → 12
+      const item = items.find(i => i._row === row);
+      if (!item) return;
+
+      if (button.dataset.action === "edit") openEditor(item);
+      if (button.dataset.action === "status") changeStatus(item, button.dataset.status);
+      if (button.dataset.action === "favorite") toggleFavorite(item);
+    }
+
+    /* OPTIMISTIC UPDATE: we change the screen FIRST, then save.
+       The owner sees the change instantly instead of waiting ~1 second.
+       If the save fails, we put the old value back and show an error. */
+    /* v2: ONE function for every quick change (status AND favorite).
+         column   → the Sheet column, e.g. "available" or "favorite"
+         newValue → the text to save, e.g. "SOLD OUT" or "TRUE"
+         message  → what the toast says when it worked
+       item[column] works like item.available or item.favorite, but the
+       property name comes from a variable (bracket notation again). */
+    async function saveField(item, column, newValue, message) {
+      const oldValue = item[column];
+
+      item[column] = newValue;      // 1. update the state...
+      render();                     // 2. ...redraw right away...
+
+      try {
+        // 3. ...then save. We send the name too, so Code.gs can check it's still the same row.
+        // { [column]: newValue } is a "computed key": if column is "favorite",
+        // this makes { favorite: "TRUE" }.
+        const updated = await callServer("updateDish", item._row, item.name, { [column]: newValue });
+        Object.assign(item, updated);   // copy the Sheet's real values into our item
+        render();
+        showToast(message);
+      } catch (error) {
+        item[column] = oldValue;        // 4. failed → undo on screen
+        render();
+        showToast(`Couldn't save: ${error.message}`, true);
+      }
+    }
+
+    function changeStatus(item, newStatus) {
+      if (statusOf(item) === newStatus) return;   // already that status → nothing to do
+      saveField(item, "available", newStatus, `${item.name}: ${STATUS_LABELS[newStatus]}`);
+    }
+
+    /* FAVORITES: flip the star. If it's a favorite now, the new value is
+       "FALSE"; if not, "TRUE". */
+    function toggleFavorite(item) {
+      const makeFavorite = !isFavorite(item);
+      saveField(
+        item,
+        "favorite",
+        makeFavorite ? "TRUE" : "FALSE",
+        makeFavorite ? `★ ${item.name} added to favorites` : `${item.name} removed from favorites`
+      );
+    }
+
+
+    /* ---------- EDIT / ADD FORM ---------- */
+
+    /* item = a dish → edit it.   item = null → empty form to add a new dish. */
+    function openEditor(item) {
+      editingItem = item;
+      form.reset();   // clear whatever was in the form last time
+
+      document.getElementById("form-title").textContent = item ? "Edit dish" : "Add a dish";
+
+      // When adding, start on the menu picked in the filter (if it's a real menu).
+      // ("every" and "favorites" aren't real menus, so those start on breakfast.)
+      const filterIsMenu = ["breakfast", "lunch", "all"].includes(menuFilter.value);
+      const startMenu = item
+        ? (item.menu || "all").toLowerCase()
+        : (filterIsMenu ? menuFilter.value : "breakfast");
+
+      field("menu").value = startMenu;
+      fillCategoryOptions(startMenu, item ? item.category : "");
+
+      if (item) {
+        // Copy each text value from the dish into the input with the same name.
+        ["name", "price", "description_en", "description_es", "options_en", "options_es"]
+          .forEach(key => { field(key).value = item[key] || ""; });
+        field("available").value = statusOf(item);
+        field("spicy").checked = (item.spicy || "").toUpperCase() === "TRUE";
+        field("gluten_free").checked = (item.gluten_free || "").toUpperCase() === "TRUE";
+        field("favorite").checked = isFavorite(item);
+      }
+
+      dialog.showModal();   // opens the pop-up and dims the page behind it
+    }
+
+    /* Fills the Category dropdown with only the categories of that menu,
+       so the owner can't put a breakfast dish in "Seafood" by accident. */
+    function fillCategoryOptions(menu, selected) {
+      const options = categories.filter(cat => cat.menu === menu);
+
+      // Safety: if the dish's current category isn't in that list (a typo in
+      // the Sheet, for example), add it anyway. Otherwise the dropdown would
+      // quietly pick the first category and Save would MOVE the dish there.
+      if (selected && !options.some(cat => cat.category === selected)) {
+        options.unshift({ category: selected, title: selected });
+      }
+
+      field("category").innerHTML = options.map(cat =>
+        `<option value="${escapeHtml(cat.category)}"${cat.category === selected ? " selected" : ""}>${escapeHtml(cat.title)}</option>`
+      ).join("");
+    }
+
+    async function saveForm(event) {
+      event.preventDefault();   // stop the browser's normal "submit and reload the page"
+
+      // Gather the form into one object with the SAME keys as the Sheet columns.
+      const values = {
+        name: field("name").value.trim(),
+        price: field("price").value.trim(),
+        available: field("available").value,
+        menu: field("menu").value,
+        category: field("category").value,
+        description_en: field("description_en").value.trim(),
+        description_es: field("description_es").value.trim(),
+        options_en: field("options_en").value.trim(),
+        options_es: field("options_es").value.trim(),
+        spicy: field("spicy").checked ? "TRUE" : "FALSE",
+        gluten_free: field("gluten_free").checked ? "TRUE" : "FALSE",
+        favorite: field("favorite").checked ? "TRUE" : "FALSE",
+      };
+
+      saveBtn.disabled = true;      // no double-saves from an impatient double tap
+      saveBtn.textContent = "Saving…";
+
+      try {
+        if (editingItem) {
+          const updated = await callServer("updateDish", editingItem._row, editingItem.name, values);
+          Object.assign(editingItem, updated);
+          render();
+        } else {
+          await callServer("addDish", values);
+          // Adding a row pushes every dish below it down one row, so all our
+          // _row numbers are now off by one. Easiest fix: reload everything.
+          await loadData();
+        }
+        dialog.close();
+        showToast(`Saved: ${values.name}`);
+      } catch (error) {
+        showToast(`Couldn't save: ${error.message}`, true);   // form stays open so nothing typed is lost
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save";
+      }
+    }
+
+
+    /* ---------- RESET SOLD OUT ---------- */
+    async function resetAllSoldOut() {
+      if (!confirm("Mark every sold-out dish as available again?")) return;
+      try {
+        const count = await callServer("resetSoldOut");
+        await loadData();
+        showToast(count === 1 ? "1 dish is back on the menu" : `${count} dishes are back on the menu`);
+      } catch (error) {
+        showToast(`Couldn't reset: ${error.message}`, true);
+      }
+    }
+
+
+    /* ---------- HELPERS ---------- */
+    let toastTimer = null;
+    function showToast(message, isError = false) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.toggle("error", isError);
+      toast.classList.add("show");
+      clearTimeout(toastTimer);   // if another toast was about to hide, cancel that
+      toastTimer = setTimeout(() => toast.classList.remove("show"), isError ? 5000 : 2500);
+    }
+
+    /* Same helpers as app.js */
+    function normalizeText(text) {
+      return String(text).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+  </script>
+</body>
+</html>

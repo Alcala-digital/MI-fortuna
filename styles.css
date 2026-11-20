@@ -10,6 +10,7 @@
   --orange: #e2582b;   /* their "Almuerzo · Breakfast" banner */
   --green: #2f6b4f;    /* "Side Orders" banner */
   --red: #c8372d;      /* "Drinks" banner */
+  --gold: #d99a1e;     /* FAVORITES (v5): the favorites card and star */
   --cream: #fbf6ee;    /* warm paper-like background */
   --ink: #2b2420;      /* main text: softer than pure black */
   --muted: #7a6e66;    /* secondary text (descriptions) */
@@ -21,7 +22,7 @@
    so "width: 100%" plus padding doesn't overflow. Almost every project uses this. */
 *, *::before, *::after { box-sizing: border-box; }
 
-/* Smooth scrolling when a category tab is tapped. */
+/* Smooth scrolling when a category tab is tapped (and when the menu switch scrolls up). */
 html { scroll-behavior: smooth; }
 
 body {
@@ -77,8 +78,8 @@ body {
   cursor: pointer;
 }
 
-/* ---------- Sticky bar: search + category tabs ----------
-   The WRAPPER is sticky, so the search box and the tabs stick together. */
+/* ---------- Sticky bar: menu switch + search + category tabs ----------
+   The WRAPPER is sticky, so all three stick together. */
 .sticky-bar {
   position: sticky;              /* behaves normally until it reaches...  */
   top: 0;                        /* ...the top of the screen, then sticks */
@@ -86,6 +87,37 @@ body {
   background: var(--cream);
   border-bottom: 1px solid var(--line);
   padding-top: 0.75rem;
+}
+
+/* MENU SWITCH (new in v3): two buttons inside one pill-shaped track.
+   The tapped button gets the class "active" from app.js and fills orange,
+   so the pair looks like a single control. */
+.menu-switch {
+  display: flex;                 /* buttons side by side */
+  width: calc(100% - 2rem);      /* same width as the search box below */
+  max-width: 728px;
+  margin: 0 auto 0.6rem;         /* centered, with a gap above the search box */
+  padding: 4px;                  /* thin space between the track's border and the buttons */
+  border: 1.5px solid var(--line);
+  border-radius: 999px;          /* pill shape */
+  background: #fff;
+}
+.menu-switch-btn {
+  flex: 1;                       /* both buttons share the width equally */
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;       /* the inactive button blends into the white track */
+  color: var(--ink);
+  font: inherit;                 /* use the page font */
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;  /* fade between states instead of snapping */
+}
+.menu-switch-btn.active {        /* the menu being shown */
+  background: var(--orange);
+  color: #fff;
 }
 
 /* SEARCH: search box */
@@ -134,13 +166,26 @@ body {
   color: #fff;
 }
 
+/* FAVORITES (v5): the "★ Favorites" tab is gold so it stands out.
+   [href="#favorites"] is an ATTRIBUTE selector: it matches only the <a>
+   whose href is exactly "#favorites", with no extra class needed. */
+.category-nav a[href="#favorites"] {
+  border-color: var(--gold);
+  color: #9a6a0c;
+}
+.category-nav a[href="#favorites"].active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
 /* ---------- Menu sections ---------- */
 .menu { max-width: 760px; margin: 0 auto; padding: 0 1rem 2rem; }
 
 .menu-section {
   /* When a tab is tapped, the browser scrolls to the section. Without this
-     margin the sticky nav would cover the section title. */
-  scroll-margin-top: 125px;      /* taller now: search box + tabs */
+     margin the sticky bar would cover the section title. */
+  scroll-margin-top: 175px;      /* v3: taller again (menu switch + search box + tabs) */
   padding-top: 1.5rem;
 }
 
@@ -245,6 +290,18 @@ body {
 .menu-section:nth-of-type(3n + 2) .category-hero { --hero-fallback: linear-gradient(135deg, var(--green), #1e4a36); }
 .menu-section:nth-of-type(3n + 3) .category-hero { --hero-fallback: linear-gradient(135deg, var(--red), #8f241c); }
 
+/* FAVORITES (v5): a gold card. The favorites block is a <div>, so the
+   nth-of-type rules above (which count <section>s) never touch it. */
+.favorites-section .category-hero {
+  --hero-fallback: linear-gradient(135deg, var(--gold), #a86a00);
+}
+
+/* FAVORITES (v5): a thin gold line under the last favorite, so it's
+   clear where the favorites end and the regular menu begins. */
+.favorites-section .item:last-child {
+  border-bottom: 2px solid var(--gold);
+}
+
 .menu-section .category-hero h2 {
   /* ".menu-section .category-hero h2" is MORE specific than ".menu-section h2"
      (two classes instead of one), so this white color wins over the orange. */
@@ -323,6 +380,7 @@ body {
   padding: 1.5rem 1rem 2.5rem;
   border-top: 1px solid var(--line);
 }
+.site-footer p { margin: 0 0 0.6rem; } /* v3: space between the gratuity note and the health warning */
 
 /* ---------- Wider screens (tablets / desktop) ----------
    Everything above applies everywhere; this only adds changes once

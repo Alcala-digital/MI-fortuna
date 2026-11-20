@@ -2,55 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Makes the page fit phone screens instead of showing a tiny zoomed-out page. -->
+  <!-- Fits phone screens (in case the redirect page shows for a split second). -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Fortuna · Menu</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- TEMPORARY PAGE: sends anyone who opens the site's main address
+       (or index.html) to the menu. When the owner's full website is ready,
+       replace this whole file with the real home page. -->
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- Tells search engines that the real page is menu.html, so Google
+       lists the menu instead of this empty redirect page. -->
+  <link rel="canonical" href="menu.html">
+
+  <!-- Redirect method 1 (plain HTML, works even if JavaScript is off):
+       content="0; url=menu.html" means "wait 0 seconds, then go to menu.html". -->
+  <meta http-equiv="refresh" content="0; url=menu.html">
+
+  <!-- Redirect method 2 (JavaScript, runs first because it's faster):
+       location.replace() swaps this page for the menu in the browser history,
+       so tapping the phone's Back button doesn't bounce the customer
+       back here and straight into the menu again. -->
+  <script>
+    window.location.replace("menu.html");
+  </script>
 </head>
 <body>
-
-  <!-- ================= HEADER =================
-       NEW: elements with a data-i18n="..." attribute get their text from
-       the UI_TEXT dictionary in app.js. "i18n" is a common nickname for
-       "internationalization" (i + 18 letters + n).
-       The English text written here is only a default; JavaScript replaces it. -->
-  <header class="site-header">
-    <!-- LANGUAGE TOGGLE: the language button.
-         It shows the language you'll SWITCH TO ("Español" while in English). -->
-    <button id="lang-toggle" class="lang-toggle" type="button" data-i18n="langButton">Español</button>
-
-    <!-- TODO: crop their logo artwork into logo.png and uncomment:
-    <img src="logo.png" alt="Mi Fortuna Mexican Restaurant" class="logo"> -->
-    <h1>Mi Fortuna</h1>
-    <p class="tagline" data-i18n="tagline">Mexican Restaurant</p>
-    <p class="notice" data-i18n="notice">Closed Mondays · No substitutions in dishes</p>
-  </header>
-
-  <!-- ================= STICKY BAR (search + tabs) =================
-       NEW: the search box and the category tabs share one wrapper, and the
-       WRAPPER is sticky, so both stay pinned to the top together. -->
-  <div class="sticky-bar">
-    <!-- SEARCH: the search box.
-         type="search" gives phones a search keyboard and a built-in clear (x) button.
-         The placeholder text is set from app.js so it can be translated. -->
-    <input id="search" class="search-input" type="search" autocomplete="off" aria-label="Search the menu">
-    <nav id="category-nav" class="category-nav" aria-label="Menu categories"></nav>
-  </div>
-
-  <main id="menu" class="menu">
-    <p class="status" data-i18n="loading">Loading menu…</p>
-  </main>
-
-  <footer class="site-footer">
-    <p data-i18n="healthWarning">The Health Department has issued a warning that consuming raw or undercooked meat and eggs is hazardous to your health.</p>
-  </footer>
-
-  <!-- At the end of <body>, so the HTML above exists when the script runs. -->
-  <script src="app.js"></script>
+  <!-- Fallback 3: if both redirects are blocked, the visitor can tap this link. -->
+  <p>
+    <a href="menu.html">View the Mi Fortuna menu</a> ·
+    <a href="menu.html">Ver el menú</a>
+  </p>
 </body>
 </html>

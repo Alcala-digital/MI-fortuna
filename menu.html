@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page fit phone screens instead of showing a tiny zoomed-out page. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Fortuna · Menu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= HEADER =================
+       Elements with a data-i18n="..." attribute get their text from
+       the UI_TEXT dictionary in app.js. "i18n" is a common nickname for
+       "internationalization" (i + 18 letters + n).
+       The English text written here is only a default; JavaScript replaces it. -->
+  <header class="site-header">
+    <!-- LANGUAGE TOGGLE: the language button.
+         It shows the language you'll SWITCH TO ("Español" while in English). -->
+    <button id="lang-toggle" class="lang-toggle" type="button" data-i18n="langButton">Español</button>
+
+    <!-- TODO: crop their logo artwork into logo.png and uncomment:
+    <img src="logo.png" alt="Mi Fortuna Mexican Restaurant" class="logo"> -->
+    <h1>Mi Fortuna</h1>
+    <p class="tagline" data-i18n="tagline">Mexican Restaurant</p>
+    <p class="notice" data-i18n="notice">Closed Mondays · No substitutions in dishes</p>
+  </header>
+
+  <!-- ================= STICKY BAR (menu switch + search + tabs) =================
+       The WRAPPER is sticky, so all three stay pinned to the top together. -->
+  <div class="sticky-bar">
+    <!-- MENU SWITCH (new in v3): two buttons that act like one control.
+         role="group" + aria-label tell screen readers the buttons belong together.
+         data-menu="..." is read by app.js to know which menu each button opens;
+         it must match the values in the sheet's "menu" column.
+         data-i18n lets app.js translate the labels.
+         &amp; is how you write "&" safely in HTML. -->
+    <div class="menu-switch" role="group" aria-label="Choose a menu">
+      <button type="button" class="menu-switch-btn" data-menu="breakfast" data-i18n="menuBreakfast">Breakfast</button>
+      <button type="button" class="menu-switch-btn" data-menu="lunch" data-i18n="menuLunch">Lunch &amp; Dinner</button>
+    </div>
+
+    <!-- SEARCH: the search box.
+         type="search" gives phones a search keyboard and a built-in clear (x) button.
+         The placeholder text is set from app.js so it can be translated. -->
+    <input id="search" class="search-input" type="search" autocomplete="off" aria-label="Search the menu">
+    <nav id="category-nav" class="category-nav" aria-label="Menu categories"></nav>
+  </div>
+
+  <main id="menu" class="menu">
+    <p class="status" data-i18n="loading">Loading menu…</p>
+  </main>
+
+  <footer class="site-footer">
+    <!-- New in v3: the gratuity note from the printed menu (translated by app.js). -->
+    <p data-i18n="gratuity">For tables of 6 or more, gratuity is automatically added to your bill. Thank you!</p>
+    <p data-i18n="healthWarning">The Health Department has issued a warning that consuming raw or undercooked meat and eggs is hazardous to your health.</p>
+  </footer>
+
+  <!-- At the end of <body>, so the HTML above exists when the script runs. -->
+  <script src="app.js"></script>
+</body>
+</html>

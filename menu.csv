@@ -1,39 +1,143 @@
-category,name,description_en,description_es,price,options_en,options_es,spicy,image_url,available
-Almuerzo · Breakfast,Huevos Rancheros,Three eggs on a corn tortilla with our special sauce and melted cheese.,Tres huevos sobre tortilla de maíz con nuestra salsa especial y queso derretido.,12.50,,,FALSE,,TRUE
-Almuerzo · Breakfast,Huevos a la Mexicana,"Scrambled eggs mixed with jalapeños, tomatoes & onions.","Huevos revueltos con jalapeños, tomate y cebolla.",12.50,,,TRUE,,TRUE
-Almuerzo · Breakfast,Huevos con Chorizo y Papas,"Scrambled eggs, potatoes & zesty Mexican sausage.",Huevos revueltos con papas y chorizo mexicano.,13.75,,,FALSE,,TRUE
-Almuerzo · Breakfast,Chilaquiles,"Deep fried corn tortilla pieces sautéed in our red sauce with onions, tomatoes, fresh Mexican cheese & two eggs any style.","Totopos de tortilla de maíz salteados en nuestra salsa roja con cebolla, tomate, queso fresco y dos huevos al gusto.",14.50,Add sirloin +$8.00 • Add T-Bone +$12.00,Con sirloin +$8.00 • Con T-Bone +$12.00,TRUE,images/thumb-chilaquiles.webp,TRUE
-Almuerzo · Breakfast,Almuerzo Fortuna,Two eggs any style with your choice of sirloin steak or T-bone cooked at your temperature.,"Dos huevos al gusto con sirloin o T-bone, cocido a su término.",17.00,With sirloin $17.00 • With T-Bone $20.00,Con sirloin $17.00 • Con T-Bone $20.00,FALSE,,TRUE
-Almuerzo · Breakfast,Breakfast Skillet,"Hash browns topped with sirloin steak, onions, tomato, cheddar cheese & two eggs any style.","Papas hash brown cubiertas con sirloin, cebolla, tomate, queso cheddar y dos huevos al gusto.",16.00,,,FALSE,,TRUE
-Almuerzo · Breakfast,Breakfast Burrito,"One giant flour tortilla filled with eggs, steak, potatoes, tomato, cheddar cheese, onions & a side of hash browns.","Una tortilla de harina gigante rellena de huevo, carne, papas, tomate, queso cheddar y cebolla, con papas hash brown al lado.",13.99,,,FALSE,,TRUE
-Almuerzo · Breakfast,Omelet Ranchero,"Eggs filled with peppers, onions, potatoes and cheddar and Monterrey Jack cheese. Served with hash browns.","Omelet relleno de pimiento, cebolla, papas y queso cheddar y Monterey Jack. Servido con papas hash brown.",11.75,,,FALSE,,TRUE
-Pancakes & More,Waffles,,,9.00,,,FALSE,,TRUE
-Pancakes & More,Golden Toast (2),French toast grilled to a perfect golden brown.,"Pan francés a la plancha, perfectamente dorado.",8.75,,,FALSE,,TRUE
-Pancakes & More,Golden Stack (3),Fluffy pancakes with syrup.,Hotcakes esponjosos con jarabe.,10.99,,,FALSE,images/thumb-golden-stack.webp,TRUE
-Pancakes & More,Crepes (3),,,9.50,,,FALSE,,SOLD OUT
-Mini Fortuna · Kids 12 & under,Lucky Egg,One egg your style with bacon or sausage & hash browns.,Un huevo al gusto con tocino o salchicha y papas hash brown.,8.99,,,FALSE,,TRUE
-Mini Fortuna · Kids 12 & under,Silver Dollar,Six mini pancakes with sausage or bacon.,Seis mini hotcakes con salchicha o tocino.,8.99,Add chocolate chips +$2.00,Agregue chispas de chocolate +$2.00,FALSE,,TRUE
-Mini Fortuna · Kids 12 & under,Mini Golden Stack,One pancake with sausage or bacon.,Un hotcake con salchicha o tocino.,8.99,Add chocolate chips +$2.00,Agregue chispas de chocolate +$2.00,FALSE,,TRUE
-Mini Fortuna · Kids 12 & under,Mini Golden Toast,One piece of French toast with sausage or bacon.,Una pieza de pan francés con salchicha o tocino.,8.99,,,FALSE,,TRUE
-Side Orders,Bacon (3),,,3.75,,,FALSE,,TRUE
-Side Orders,Sausage (3),,,3.75,,,FALSE,,TRUE
-Side Orders,Ham,,,3.75,,,FALSE,,TRUE
-Side Orders,Side of Fruit,,,4.50,,,FALSE,,TRUE
-Side Orders,Bowl of Fruit,,,6.00,,,FALSE,,TRUE
-Side Orders,Hash Browns,,,4.00,,,FALSE,,TRUE
-Side Orders,French Fries,,,4.00,,,FALSE,,TRUE
-Side Orders,Egg Your Style,,,2.00,,,FALSE,,TRUE
-Side Orders,Side of Toast,,,2.50,,,FALSE,,TRUE
-Side Orders,Avocado,,,2.00,,,FALSE,,TRUE
-Side Orders,Cheese,,,1.25,,,FALSE,,TRUE
-Side Orders,T-Bone (12 oz),,,12.00,,,FALSE,,TRUE
-Side Orders,Sirloin,,,8.00,,,FALSE,,TRUE
-Drinks,Fountain Drinks,"Pepsi, Pepsi Zero, Starry, Mt. Dew, Dr Pepper and more.","Pepsi, Pepsi Zero, Starry, Mt. Dew, Dr Pepper y más.",3.00,One refill.,Un refill.,FALSE,,TRUE
-Drinks,Coke (bottle),,,3.50,,,FALSE,,TRUE
-Drinks,Jarritos (bottle),,,3.50,,,FALSE,,TRUE
-Drinks,Orange Juice,,,2.49,Small $2.49 • Large $4.99,Chico $2.49 • Grande $4.99,FALSE,,TRUE
-Drinks,Apple or Cranberry Juice,,,,,,FALSE,,TRUE
-Drinks,Milk,,,2.49,Small $2.49 • Large $3.29,Chico $2.49 • Grande $3.29,FALSE,,TRUE
-Drinks,Chocolate Milk,,,2.49,Small $2.49 • Large $3.29,Chico $2.49 • Grande $3.29,FALSE,,TRUE
-Drinks,Organic Coffee,Regular or decaf.,Regular o descafeinado.,3.00,,,FALSE,,TRUE
-Drinks,Hot Tea,,,2.75,,,FALSE,,TRUE
+menu,category,name,description_en,description_es,price,options_en,options_es,spicy,gluten_free,image_url,available,favorite
+breakfast,Almuerzo · Breakfast,Huevos Rancheros,Three eggs on a corn tortilla with our special sauce and melted cheese.,Tres huevos sobre tortilla de maíz con nuestra salsa especial y queso derretido.,12.50,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Huevos a la Mexicana,"Scrambled eggs mixed with jalapeños, tomatoes & onions.","Huevos revueltos con jalapeños, tomate y cebolla.",12.50,,,TRUE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Huevos con Chorizo y Papas,"Scrambled eggs, potatoes & zesty Mexican sausage.",Huevos revueltos con papas y chorizo mexicano.,13.75,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Chilaquiles,"Deep fried corn tortilla pieces sautéed in our red or green sauce with onions, tomatoes, fresh Mexican cheese & two eggs any style.","Totopos de tortilla de maíz salteados en nuestra salsa roja o verde con cebolla, tomate, queso fresco y dos huevos al gusto.",14.50,Add Asada • Add Chorizo +$5.50,Con Asada • Con Chorizo +$5.50,TRUE,FALSE,images/thumb-chilaquiles.webp,TRUE,TRUE
+breakfast,Almuerzo · Breakfast,Almuerzo Mi Fortuna,Two eggs any style with served with Asada.,Dos huevos al gusto con Asada.,16.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Breakfast Skillet,"Hash browns topped with sirloin steak, onions, tomato, cheddar cheese & two eggs any style.","Papas hash brown cubiertas con sirloin, cebolla, tomate, queso cheddar y dos huevos al gusto.",16.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Breakfast Burrito,"One giant flour tortilla filled with eggs, steak, potatoes, tomato, cheddar cheese, onions & a side of hash browns.","Una tortilla de harina gigante rellena de huevo, carne, papas, tomate, queso cheddar y cebolla, con papas hash brown al lado.",14.00,,,FALSE,FALSE,,TRUE,TRUE
+breakfast,Almuerzo · Breakfast,Omelet Ranchero,"Eggs filled with peppers, onions, potatoes and cheddar and Monterey Jack cheese. Served with hash browns.","Omelet relleno de pimiento, cebolla, papas y queso cheddar y Monterey Jack. Servido con papas hash brown.",12.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Almuerzo · Breakfast,Golden Toast (2),French toast grilled to a perfect golden brown.,"Pan francés a la plancha, perfectamente dorado.",8.75,"Add strawberry, apple, cherry or chocolate chips +$2.00","Agregue fresa, manzana, cereza o chispas de chocolate +$2.00",FALSE,FALSE,images/thumb-golden-stack.webp,TRUE,FALSE
+breakfast,Mini Fortuna · Breakfast,Lucky Egg,One egg your style with bacon or sausage & hash browns.,Un huevo al gusto con tocino o salchicha y papas hash brown.,9.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Mini Fortuna · Breakfast,Mini Golden Toast,One piece of French toast with sausage or bacon.,Una pieza de pan francés con salchicha o tocino.,9.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Bacon (3),,,3.75,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Sausage (3),,,3.75,,,FALSE,FALSE,,FALSE,FALSE
+breakfast,Breakfast Sides,Ham,,,3.75,,,FALSE,FALSE,,FALSE,FALSE
+breakfast,Breakfast Sides,Side of Fruit,,,4.50,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Bowl of Fruit,,,6.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Hash Browns,,,4.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,French Fries,,,4.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Egg Your Style,,,2.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Side of Toast,,,2.50,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Avocado,,,2.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Cheese,,,1.25,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,T-Bone (12 oz),,,12.00,,,FALSE,FALSE,,TRUE,FALSE
+breakfast,Breakfast Sides,Sirloin,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Table Side Guacamole,"Freshly prepared your way in a traditional molcajete lava rock. Served with chips. Onion, cilantro, tomato, jalapeños, lime juice.","Preparado a su gusto en un molcajete tradicional de piedra volcánica. Servido con totopos. Cebolla, cilantro, tomate, jalapeños y jugo de limón.",,Market price,Precio de mercado,FALSE,TRUE,,TRUE,FALSE
+lunch,Appetizers,House Guacamole,"Onion & tomato. Add it to any dish, or get a large order with chips.",Con cebolla y tomate. Agréguelo a cualquier platillo o pida una orden grande con totopos.,,Market price,Precio de mercado,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Chips & Salsa,"Our traditional homemade salsa, hot or mild.","Nuestra salsa casera tradicional, picante o suave.",4.50,Basket $2.50 • Salsa cup $1.00 each,Canasta $2.50 • Vaso de salsa $1.00 c/u,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Quesadilla Combination,"One large flour quesadilla oozing with melted cheese, bacon, green peppers & mushrooms, topped with lettuce, tomato & sour cream.","Una quesadilla grande de harina con queso derretido, tocino, pimiento verde y champiñones, cubierta con lechuga, tomate y crema.",12.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Choice Quesadilla,"One large flour quesadilla of your choice topped with lettuce, tomato & sour cream.","Una quesadilla grande de harina a su elección, cubierta con lechuga, tomate y crema.",10.75,Plain $10.75 • Beef or chicken $12.75 • Steak or al pastor $14.75,Sencilla $10.75 • Res o pollo $12.75 • Asada o al pastor $14.75,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Super Nachos,"Your choice of beef or chicken covered with cheese, jalapeños and sour cream.","Res o pollo a su elección, cubiertos con queso, jalapeños y crema.",10.75,Plain $10.75 • Beef or chicken $12.75 • Steak or al pastor $14.75,Sencillos $10.75 • Res o pollo $12.75 • Asada o al pastor $14.75,FALSE,TRUE,,TRUE,FALSE
+lunch,Appetizers,Carne Asada Fries,"Fries topped with our steak, melted cheese & sour cream.","Papas fritas cubiertas con nuestra carne asada, queso derretido y crema.",13.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Appetizers,Jalapeño Poppers (6),"Breaded, fried jalapeños stuffed with cream cheese, served with a side of ranch dressing.","Jalapeños empanizados y fritos, rellenos de queso crema, con aderezo ranch al lado.",8.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Tacos,Beef or Chicken Tacos (3),,,12.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Tacos,Steak or Al Pastor Tacos (3),,,16.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Tacos,Fish or Shrimp Tacos (3),,,16.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Tacos,Taco Salad Mi Fortuna,"Your choice of grilled chicken or steak inside a crispy edible salad bowl, topped with fresh lettuce, tomato, bell peppers, onions & cheese; served with spicy ranch.","Pollo a la parrilla o carne asada a su elección en un tazón crujiente comestible, con lechuga fresca, tomate, pimientos, cebolla y queso; servida con ranch picante.",15.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Tacos,Taco Salad,"Your choice of chicken, beef, or beans inside a crispy, edible salad bowl. Topped with lettuce, tomato, cheese & sour cream.","Pollo, res o frijoles a su elección en un tazón crujiente comestible. Con lechuga, tomate, queso y crema.",12.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Burritos,Burrito El Sol,Filled with chicken and topped with ranchero sauce & melted cheese.,"Relleno de pollo, cubierto con salsa ranchera y queso derretido.",14.95,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Burritos,Beef Burrito,Filled with beef and topped with spicy green sauce & melted cheese.,"Relleno de res, cubierto con salsa verde picante y queso derretido.",14.00,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Burritos,Chile Verde Burrito,"Filled with tender pork and smothered with spicy green sauce, topped with melted cheese.","Relleno de puerco tierno, bañado en salsa verde picante y cubierto con queso derretido.",14.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Burritos,Al Pastor Burrito,Filled with our marinated pork and spices & topped with melted cheese.,"Relleno de nuestro puerco al pastor marinado con especias, cubierto con queso derretido.",16.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Burritos,Steak Burrito,Filled with steak & topped with melted cheese.,"Relleno de carne asada, cubierto con queso derretido.",16.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Burritos,Simon Burrito,"Our largest burrito yet! A delicious chicken burrito filled with beans, rice, cheese, lettuce, tomato, onions, and sour cream.","¡Nuestro burrito más grande! Un delicioso burrito de pollo relleno de frijoles, arroz, queso, lechuga, tomate, cebolla y crema.",13.75,Add steak or al pastor +$4.00,Con asada o al pastor +$4.00,FALSE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Enchiladas,"Two corn tortillas filled with your choice of cheese, chicken, beef, or steak and covered with our tasty red enchilada sauce & melted cheese.","Dos tortillas de maíz rellenas de queso, pollo, res o asada a su elección, bañadas en nuestra sabrosa salsa roja para enchiladas y queso derretido.",14.75,"Cheese, chicken or beef $14.75 • Steak $17.75","Queso, pollo o res $14.75 • Asada $17.75",FALSE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Enchiladas Verdes,Two corn tortillas filled with chicken and covered with spicy green sauce & melted cheese.,"Dos tortillas de maíz rellenas de pollo, bañadas en salsa verde picante y queso derretido.",14.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Seafood Enchiladas,"Two corn tortillas filled with scallops, shrimp, imitation crab meat, onions & bell peppers. Covered with our red enchilada sauce & melted cheese. No substitutions.","Dos tortillas de maíz rellenas de callo de hacha, camarón, surimi, cebolla y pimiento. Bañadas en nuestra salsa roja para enchiladas y queso derretido. Sin sustituciones.",16.75,Flour tortillas +$1.00,Tortillas de harina +$1.00,FALSE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Vegetable Enchiladas,"Two corn tortillas filled with bell peppers, mushrooms, potatoes, carrots, onions & tomatoes. Covered with our red enchilada sauce & melted cheese. No substitutions.","Dos tortillas de maíz rellenas de pimiento, champiñones, papa, zanahoria, cebolla y tomate. Bañadas en nuestra salsa roja para enchiladas y queso derretido. Sin sustituciones.",13.75,Flour tortillas +$1.00,Tortillas de harina +$1.00,FALSE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Enchiladas Mexicanas,Say cheese! Four cheese and onion enchiladas covered in a zesty red Mexican sauce & fresh Mexican cheese.,¡Diga queso! Cuatro enchiladas de queso y cebolla bañadas en una salsa roja mexicana bien sazonada y queso fresco.,14.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Enchiladas,Enchiladas Mi Fortuna,Two flour tortillas filled & covered with our own special ranchero sauce & melted cheese.,Dos tortillas de harina rellenas y bañadas en nuestra salsa ranchera especial y queso derretido.,14.75,Add steak or al pastor +$4.00,Con asada o al pastor +$4.00,FALSE,FALSE,,TRUE,FALSE
+lunch,Antojitos,Tostadas (3),,,12.75,"Beef, bean or chicken $12.75 • Steak or al pastor $14.75","Res, frijol o pollo $12.75 • Asada o al pastor $14.75",FALSE,FALSE,,TRUE,FALSE
+lunch,Antojitos,Torta (Mexican Sandwich),"Your choice of meat (steak, al pastor, or chorizo) stuffed with beans, lettuce, cheese, tomato & sour cream.","Carne a su elección (asada, al pastor o chorizo) con frijoles, lechuga, queso, tomate y crema.",14.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Antojitos Mexicanos,Chimichangas (2),Flour tortillas deep fried to perfection and stuffed with your choice of meat & cheese.,"Tortillas de harina fritas a la perfección, rellenas de la carne de su elección y queso.",14.75,"Chicken, beef or pork $14.75 • Steak or al pastor +$4.00","Pollo, res o puerco $14.75 • Asada o al pastor +$4.00",FALSE,FALSE,,TRUE,FALSE
+lunch,Antojitos Mexicanos,Chiles Rellenos (2),"Two poblano chile peppers stuffed with Monterey Jack cheese, dipped in egg batter & deep fried. Topped with our special sauce & fresh Mexican cheese.","Dos chiles poblanos rellenos de queso Monterey Jack, capeados con huevo y fritos. Cubiertos con nuestra salsa especial y queso fresco.",17.00,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Antojitos Mexicanos,Flautas (4),"Four corn tortillas filled with your choice of meat, rolled up and deep fried. Served with sour cream.","Cuatro tortillas de maíz rellenas de la carne de su elección, enrolladas y fritas. Servidas con crema.",12.75,Chicken or beef $12.75 • Steak $14.75,Pollo o res $12.75 • Asada $14.75,FALSE,FALSE,,TRUE,FALSE
+lunch,Antojitos Mexicanos,Tamales (2),Pork tamales covered in our special sauce & melted cheese.,Tamales de puerco bañados en nuestra salsa especial y queso derretido.,13.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Huarache (1),"Our signature steak chopped and grilled, topped with refried beans, melted chihuahua cheese & spicy green sauce.","Nuestra carne asada de la casa, picada y a la parrilla, con frijoles refritos, queso chihuahua derretido y salsa verde picante.",18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Chile Verde Plate,"Chunks of our smothered, fall-apart pork in our spicy green chile sauce. Served with tortillas.","Trozos de puerco tierno que se deshace, en nuestra salsa verde picante. Servido con tortillas.",16.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Steak a la Tampiqueña,"A juicy, tender steak with a cheese enchilada and a beef taco.",Un jugoso y tierno corte de res con una enchilada de queso y un taco de res.,19.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Steak a la Mexicana,"Just say olé! Diced steak sautéed with tomatoes, onions & jalapeño peppers.","¡Olé! Carne de res en cubos, salteada con tomate, cebolla y chile jalapeño.",18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Steak Mi Fortuna,"Our signature steak topped with sautéed mushrooms, onions, tomatoes, jalapeños & sliced round potatoes.","Nuestro corte de la casa cubierto con champiñones, cebolla, tomate y jalapeños salteados, y papas en rodajas.",18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Platillos Mexicanos,Mole,Chicken with a sweet and spicy dark sauce with a hint of chocolate and spices.,"Pollo en salsa oscura dulce y picante, con un toque de chocolate y especias.",18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Especialidades,Fajitas,"Your choice of marinated meat, sautéed with onions, green peppers, red peppers, yellow peppers & carrots.","Carne marinada de su elección, salteada con cebolla, pimiento verde, rojo y amarillo, y zanahoria.",17.75,Chicken $17.75 • Steak $18.50 • Shrimp $18.50,Pollo $17.75 • Asada $18.50 • Camarón $18.50,FALSE,FALSE,,TRUE,TRUE
+lunch,Especialidades,Combo Fajita,"Delicious combo of steak, chicken, shrimp & imitation crab.","Deliciosa combinación de asada, pollo, camarón y surimi.",20.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Especialidades,Vegetable Fajita,"A mix of green peppers, red peppers, yellow peppers, carrots, tomatoes, onions, mushrooms, celery & broccoli.","Una mezcla de pimiento verde, rojo y amarillo, zanahoria, tomate, cebolla, champiñones, apio y brócoli.",17.00,Add steak +$4.00,Con asada +$4.00,FALSE,FALSE,,TRUE,FALSE
+lunch,Especialidades,Pollo Mi Fortuna,"Marinated chunks of boneless chicken on a bed of sizzling onions, green, red & yellow peppers, carrots & tomato. Served with fresh avocado slices.","Trozos de pollo deshuesado marinado sobre una cama chisporroteante de cebolla, pimiento verde, rojo y amarillo, zanahoria y tomate. Servido con rebanadas de aguacate fresco.",18.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Especialidades,Steak con Queso,"Steak marinated with green, yellow & red peppers, onions, and carrots. Topped with melted chihuahua cheese.","Carne asada marinada con pimiento verde, amarillo y rojo, cebolla y zanahoria. Cubierta con queso chihuahua derretido.",18.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Especialidades,Parrillada Mi Fortuna,"A delicious blend of steak, chicken, chorizo, potatoes, cebollitas, banana peppers, and jalapeños. Served with Mexican rice, refried beans, pico de gallo & tortillas.","Una deliciosa mezcla de asada, pollo, chorizo, papas, cebollitas, chiles güeros y jalapeños. Servida con arroz mexicano, frijoles refritos, pico de gallo y tortillas.",26.00,For one $26.00 • For two $52.00,Para uno $26.00 • Para dos $52.00,FALSE,FALSE,,TRUE,TRUE
+lunch,Seafood,Camarones a la Diabla,"Our delicious spicy shrimp served with our house vegetables, Mexican rice, refried beans & tortillas.","Nuestros deliciosos camarones picantes, servidos con verduras de la casa, arroz mexicano, frijoles refritos y tortillas.",18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Seafood,Camarones al Mojo de Ajo,"Shrimp sautéed in our butter garlic sauce, served with our house vegetables, Mexican rice, refried beans & tortillas.","Camarones salteados en nuestra salsa de mantequilla y ajo, servidos con verduras de la casa, arroz mexicano, frijoles refritos y tortillas.",18.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Seafood,Caldo de Camarón,A bowl of our delicious shrimp soup.,Un plato de nuestro delicioso caldo de camarón.,18.75,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Seafood,Cóctel de Camarón,"Fresh-to-order shrimp served warm or cold, with cilantro, onion, tomato and avocado.","Camarón preparado al momento, caliente o frío, con cilantro, cebolla, tomate y aguacate.",17.00,Add pulpo (octopus) +$3.00,Con pulpo +$3.00,FALSE,TRUE,,TRUE,FALSE
+lunch,American Dishes,Chicken Breast Sandwich,,,9.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,American Dishes,Chicken Tenders (4),,,8.95,,,FALSE,FALSE,,TRUE,FALSE
+lunch,American Dishes,Cheeseburger,,,9.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,American Dishes,Hamburger,,,8.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L1 · Two Chicken Tacos (Flour Tortillas),,Dos tacos de pollo en tortilla de harina.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L2 · Two Beef Hard Shell Tacos,,Dos tacos de res en tortilla dura.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L3 · Enchiladas Verdes (Chicken),,Enchiladas verdes de pollo.,11.99,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L4 · Enchiladas Rojas (Cheese),,Enchiladas rojas de queso.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L5 · One Beef Burrito,,Un burrito de res.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L6 · One Pork Burrito,,Un burrito de puerco.,11.99,,,TRUE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L7 · One Chicken Chimichanga,,Una chimichanga de pollo.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L8 · Vegetable Enchiladas,,Enchiladas de verduras.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L9 · Two Bean Tostadas,,Dos tostadas de frijol.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Lunch Specials,L10 · One Chile Relleno,,Un chile relleno.,11.99,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Mini Fortuna,Kid Quesadilla,Warm tortilla filled with chicken or beef & cheese.,Tortilla caliente rellena de pollo o res y queso.,9.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Mini Fortuna,Kid Enchilada,"Your choice of beef, chicken or cheese.","Res, pollo o queso, a su elección.",9.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Mini Fortuna,Kid Taco,"Hard, corn, or flour tortilla filled with beef or chicken.","Tortilla dura, de maíz o de harina, rellena de res o pollo.",9.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Mini Fortuna,Kid Burrito,"Filled with your choice of beef, chicken, or beans.","Relleno de res, pollo o frijoles, a su elección.",9.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Enchilada,"Beef, chicken or cheese.","Res, pollo o queso.",5.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Tostada,"Beef, chicken or beans.","Res, pollo o frijoles.",4.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Taco (Beef or Chicken),,,3.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,"Taco (Steak, Pastor or Shrimp)",,,5.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Rice & Beans,,,3.25,$3.25 each • $5.50 for both,$3.25 cada uno • $5.50 ambos,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Huarache,,,13.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Chile Relleno,,,5.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Tamale,,,5.25,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Flour Tortillas (3),,,3.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Corn Tortillas (4),,,3.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,French Fries,,,4.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Guacamole (2 oz),,,1.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Cheese (2 oz),,,0.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Sour Cream (2 oz),,,0.75,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Pico de Gallo (2 oz),,,1.25,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Salsa Verde,,,0.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Jalapeño Toreado,,,1.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Cebollitas (3),,,2.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Side Orders,Banana Peppers,,,1.50,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Desserts,Mexican Fried Ice Cream,"Choice of topping: chocolate, strawberry, or honey. Topped with whipped cream.","Helado frito. Cobertura a elegir: chocolate, fresa o miel. Con crema batida.",6.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Desserts,Sopapillas (3),"Fluffed up and deep fried flour tortillas topped with cinnamon, sugar and honey.","Tortillas de harina infladas y fritas, con canela, azúcar y miel.",6.00,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Desserts,Chalupa,"A fruit-filled chimichanga of your choice (strawberry, cherry, or apple) topped with whipped cream.","Chimichanga rellena de fruta a su elección (fresa, cereza o manzana), con crema batida.",5.95,,,FALSE,FALSE,,TRUE,FALSE
+lunch,Desserts,Nacho Sundae,"Choice of topping: chocolate, strawberry, or honey. Served with sopapilla chips.","Cobertura a elegir: chocolate, fresa o miel. Servido con totopos de sopapilla.",7.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Fountain Drinks,"Pepsi, Pepsi Zero, Starry, Crush, Mt. Dew, Raspberry Iced Tea, Dr Pepper.","Pepsi, Pepsi Zero, Starry, Crush, Mt. Dew, té helado de frambuesa, Dr Pepper.",3.00,One refill.,Un refill.,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Coke (bottle),,,3.50,,,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Jarritos (bottle),,,3.50,,,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Juice,"Orange, apple or cranberry.","Naranja, manzana o arándano.",3.00,Small $3.00 • Large $5.00,Chico $3.00 • Grande $5.00,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Milk,,,2.49,Small $2.49 • Large $3.29,Chico $2.49 • Grande $3.29,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Chocolate Milk,,,2.49,Small $2.49 • Large $3.50,Chico $2.49 • Grande $3.50,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Organic Coffee,Regular or decaf.,Regular o descafeinado.,3.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Drinks,Hot Tea,,,2.75,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Margaritas,,,8.00,Lime • Strawberry • Raspberry • Peach • Mango,Limón • Fresa • Frambuesa • Durazno • Mango,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Daiquiris,,,8.00,Strawberry • Raspberry • Peach • Mango,Fresa • Frambuesa • Durazno • Mango,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Piña Colada,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Miami Vice,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Blue Hawaiian,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Mangonada,,,8.50,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Jalapeño Margarita,,,9.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Old Fashioned,,,7.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Manhattan,,,9.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Long Island Iced Tea,,,9.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Bahama Mama,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Rum Runner,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Paloma,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Moscow Mule,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Cosmopolitan,,,9.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Michelada,,,10.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Bloody Mary,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Alcoholic Drinks,Bloody Maria,,,8.00,,,FALSE,FALSE,,TRUE,FALSE
+all,Beer & Wine,Domestic Beer,,,4.50,Bud Light • Miller Lite • Coors Light • Spotted Cow,Bud Light • Miller Lite • Coors Light • Spotted Cow,FALSE,FALSE,,TRUE,FALSE
+all,Beer & Wine,Imported Beer,,,5.00,Corona • Corona Light • Modelo Especial • Negra Modelo • Dos XX Lager • Dos XX Amber • Pacifico • Victoria,Corona • Corona Light • Modelo Especial • Negra Modelo • Dos XX Lager • Dos XX Amber • Pacifico • Victoria,FALSE,FALSE,,TRUE,FALSE
+all,Beer & Wine,Wine,,,6.00,Moscato • Pinot Grigio • Chardonnay • Riesling • Cabernet Sauvignon,Moscato • Pinot Grigio • Chardonnay • Riesling • Cabernet Sauvignon,FALSE,FALSE,,TRUE,FALSE
+all,Beer & Wine,Sangria,,,6.50,,,FALSE,FALSE,,TRUE,FALSE
