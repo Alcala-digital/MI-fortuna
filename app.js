@@ -35,7 +35,7 @@
    can't load, the page uses them instead. Refresh them now and then
    (File → Download → CSV from each tab) so the backup doesn't fall too
    far behind the owner's edits. */
-const MENU_API_URL = "https://script.google.com/macros/s/AKfycbwpPHqvnuqgEMd8Jl1Rm4zmngU1bbwN5wJb_mZ974VkC7T485NLPr7jJNSZ2NoAE_z1Eg/exec";
+const MENU_API_URL = "https://script.google.com/macros/s/AKfycbxh8bPi4CtKcnF8F8nMrhbwGYGtQjxTEqgieejYHM1Bx3B4xOHmTO1p-96n7AGCsX9wyA/exec";
 const LOCAL_MENU_CSV = "menu.csv";
 const LOCAL_CATEGORIES_CSV = "categories.csv";
 
